@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+        <title>Test Vue.js</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div id="app">
+            <div>
+                <button @click="modalAction()" class="buttonModal">Show Modal</button>
+            </div>
+            <br>
+            <div v-if="modal" class="bg-smoke absolute pin-t pin-l h-screen w-full grid items-center justify-center"  >
+                <div class="bg-white p-4 rounded">
+                <form id="#app1">
+                    
+                    <span v-for="e in errors">{{ e }}</span>
+                    
+                    <section v-if="step == 1">
+                        <div class="formProgress">
+                            <p>1</p><span></span><p>2</p><span></span><p>3</p>
+                        </div>
+                        <input v-model="form.name" type="text" placeholder="What is your name?" class="form-control form-control-lg"><br>
+                    </section>
+
+                    <section v-if="step == 2">
+                        <div class="formProgress progres2">
+                            <p class="tag1">1</p><span class="span1"></span><p class="tag2">2</p><span></span><p>3</p>
+                        </div>
+                        <input v-model="form.phone" type="tel" placeholder="What is your phone number?" class="form-control form-control-lg"><br>
+                        
+                        <input v-model="form.email" type="email" placeholder="What is your email address?" class="form-control form-control-lg"><br>
+                    </section>
+
+                    <section v-if="step == 3">
+                        <div class="formProgress progres3">
+                            <p class="tag1">1</p><span class="span1"></span><p class="tag2">2</p><span class="span2"></span><p class="tag3">3</p>
+                        </div>
+                        <textarea v-model="form.message" placeholder="Type your message"  class="form-control form-control-lg"></textarea><br>
+                        <input v-model="form.upload" type="file" class="form-control form-control-lg" name="upload" accept="application/pdf,application/vnd.ms-excel" /><br>
+                    </section>
+                    <button v-if="step != 1" @click.prevent="prevStep()" class="buttonPrev">Prev</button>
+                    <button v-if="step != totalsteps" @click.prevent="nextStep()" class="buttonNext">Next</button>
+                    <button v-if="step == 3" @click.prevent="sendEnquiry(), modalAction()" class="buttonNext">Send Enquiry</button>
+                </form>
+                <button @click="modalAction()" class="buttonClose">Close Modal</button>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="Vue.js"></script>
+        <script type="text/javascript" src="javaScript.js"></script>
+    </body>
+</html>
